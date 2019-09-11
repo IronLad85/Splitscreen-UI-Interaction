@@ -9,7 +9,7 @@ import { ElementRef } from "@angular/core";
 export class LandingpageComponent implements OnInit {
   expandedPaneIndex = null;
   isDeviceCompatible = false;
-  baseURL="Splitscreen-UI-Interaction/"
+  baseURL="/Splitscreen-UI-Interaction/"
 
   constructor(public elRef: ElementRef) {
     this.onResize(null);
