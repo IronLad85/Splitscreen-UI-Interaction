@@ -9,6 +9,7 @@ import { ElementRef } from "@angular/core";
 export class LandingpageComponent implements OnInit {
   expandedPaneIndex = null;
   isDeviceCompatible = false;
+  baseURL="Splitscreen-UI-Interaction/"
 
   constructor(public elRef: ElementRef) {
     this.onResize(null);
@@ -43,7 +44,6 @@ export class LandingpageComponent implements OnInit {
       activePane.className = activePane.className + " active-pane shrinkable";
       inactivePane.className =
         inactivePane.className + " inactive-pane expandable";
-      console.log(activePane);
     }
     return false;
   }
