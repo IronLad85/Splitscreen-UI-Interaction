@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="isDeviceCompatible">
   <div class="content-block">
     <div class="topbar">
       <div class="topbar-section">
@@ -15,52 +15,146 @@
         </i>
       </div>
     </div>
-    <div class="header-overlay">
+    <div class="header-overlay" (click)="resetPanes()">
+      <img
+        src="https://i.dlpng.com/static/png/103198_preview.png"
+        width="35"
+        height="25"
+        style="padding-right:5px"
+      />
       MJSTC
     </div>
+
+    <!-- Left Pane -->
     <div class="left-pane">
+      <div class="close-button">
+        <i class="material-icons" (click)="resetPanes()">
+          close
+        </i>
+      </div>
       <div class="img-container">
         <img src="../../assets/asset1.png" />
       </div>
       <div class="pane-content">
-        <div>CRUISER SKATEBOARD</div>
+        <div class="product-title">CRUISER SKATEBOARD</div>
         <div class="pane-header">
           <div>Oh YEA <br />..PUSH IT!</div>
         </div>
-        <div class="product-description">
-          <div>Interdum et malesuada fames ac ante ipsum primis in faucibus. </div>
-          <div>Integer id nisi nec nulla lactus lacinia non eu turpis</div>
+        <div
+          class="shrinked-info"
+          [ngClass]="{ hidden: expandedPaneIndex != null }"
+        >
+          <div class="product-description">
+            <div>
+              Interdum et malesuada fames ac ante ipsum primis in faucibus.
+            </div>
+            <div>Integer id nisi nec nulla lactus lacinia non eu turpis</div>
+          </div>
+          <div class="button" (click)="expandPane(0, $event)">
+            Discover More &nbsp; &nbsp;
+            <i class="material-icons">
+              arrow_right_alt
+            </i>
+          </div>
         </div>
-        <div class="button" (click)="expandPane(0)">
-          Discover More &nbsp; &nbsp;
+        <div
+          class="expanded-info"
+          [ngClass]="{ hidden: expandedPaneIndex == null }"
+        >
+          <div class="info-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor.
+          </div>
+          <div class="price-block">
+            <div class="price">$ 170.00</div>
+            <div class="button">
+              Add To Cart &nbsp; &nbsp;
+              <i class="material-icons">
+                arrow_right_alt
+              </i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pane-arrow-container">
+        <div class="pane-arrow left" (click)="onInactivePaneClick(0)">
           <i class="material-icons">
-            arrow_right_alt
+            chevron_left
           </i>
         </div>
       </div>
     </div>
+    <!-- Left Pane Ends -->
+
+    <!-- Right Pane -->
     <div class="right-pane">
       <div class="img-container">
         <img src="../../assets/shoe-2.png" id="shoe-img" />
       </div>
+      <div class="close-button">
+        <i class="material-icons" (click)="resetPanes()">
+          close
+        </i>
+      </div>
       <div class="pane-content">
-        <div>CRUISER SKATEBOARD</div>
+        <div class="product-title">ADIDAS TENNIS HU</div>
         <div class="pane-header">
           <div class="text-block">Because</div>
           <div class="text-block">I'm Happy</div>
           <div class="text-block">Again</div>
         </div>
-        <div class="product-description">
-          <div>Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-          <div>Integer id nisi nec nulla lactus lacinia non eu turpis.</div>
+        <div
+          class="shrinked-info"
+          [ngClass]="{ hidden: expandedPaneIndex != null }"
+        >
+          <div class="product-description">
+            <div>
+              Interdum et malesuada fames ac ante ipsum primis in faucibus.
+            </div>
+            <div>Integer id nisi nec nulla lactus lacinia non eu turpis.</div>
+          </div>
+          <div class="button" (click)="expandPane(1, $event)">
+            Discover More &nbsp; &nbsp;
+            <i class="material-icons">
+              arrow_right_alt
+            </i>
+          </div>
         </div>
-        <div class="button" (click)="expandPane(1)">
-          Discover More &nbsp; &nbsp;
-          <i class="material-icons">
-            arrow_right_alt
+        <div
+          class="expanded-info"
+          [ngClass]="{ hidden: expandedPaneIndex == null }"
+        >
+          <div class="info-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor.
+          </div>
+          <div class="price-block">
+            <div class="price">$ 170.00</div>
+            <div class="button">
+              Add To Cart &nbsp; &nbsp;
+              <i class="material-icons">
+                arrow_right_alt
+              </i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pane-arrow-container">
+        <div class="pane-arrow right">
+          <i class="material-icons" (click)="onInactivePaneClick(1)">
+            chevron_left
           </i>
         </div>
       </div>
     </div>
+    <!-- Right Pane Ends -->
   </div>
+</div>
+
+<div class="incompatible-message" *ngIf="!isDeviceCompatible">
+  This Interaction is only compatible on desktop devices!
 </div>
