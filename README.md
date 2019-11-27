@@ -5,7 +5,7 @@
 
 ## Screenshot
 <hr/>
-<img src="screenshot.png" width="800"/>
+<img src="screenshot1.png" width="800"/>
 
 #### It is mainly built using Pure HTML and SCSS with little Javascript without any dependencies, hence easy to use in other JS frameworks.
 
